@@ -17,7 +17,7 @@ let salarios = [{
     salario: 2000
 }];
 
-let getEmpleado = (id) => {
+/* let getEmpleado = (id) => {
 
     return new Promise((resolve, reject) => {
 
@@ -34,4 +34,25 @@ let getEmpleado = (id) => {
 
 getEmpleado(1).then(empleado => {
     console.log('Empleados de BD', empleado);
+}, (err) => {
+    console.log(err);
+}); */
+
+
+let getSalario = (empleado) => {
+    return new Promise((resolve, reject) => {
+        let empeladoSalario = empleados.find(empleado => empleado.id === id).salario;
+
+        if (!empeladoSalario) {
+            reject(`No se encontro usuario`);
+        } else {
+            resolve(null, empeladoSalario)
+        }
+    });
+}
+
+getSalario(1).then(empleado => {
+    console.log(`el salario de empleado es ${empleado}`);
+}, (err) => {
+    console.log(err);
 })
